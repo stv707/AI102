@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mod05-knowledge-mining", "mod05-knowledge-mining", "{B99CD9DA-E2BE-4E93-9FDF-776B7EC14C7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Labfiles", "Labfiles", "{28ACA8A7-9925-419B-8239-155F8453C512}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07-exercise-add-to-index-use-push-api lab-files", "07-exercise-add-to-index-use-push-api lab-files", "{0E871620-8A87-46B4-88D2-17624B2158FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptimizeDataIndexing", "mod05-knowledge-mining\Labfiles\07-exercise-add-to-index-use-push-api lab-files\OptimizeDataIndexing\OptimizeDataIndexing.csproj", "{EEA13CCF-EDB0-4001-B43E-904C914C9303}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mod04-openai", "mod04-openai", "{F42B751F-8B7E-4463-8A34-3D6AD49810C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Labfiles", "Labfiles", "{500EAB12-CD3F-4E65-8599-4ED5BAA48430}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-code-generation", "04-code-generation", "{0B7CD8C8-D21B-44B7-8070-38F1748CBDF1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample-code", "sample-code", "{FBD35F3D-ACEF-41E7-950E-734700EFABF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp", "mod04-openai\Labfiles\04-code-generation\sample-code\go-fish\CSharp.csproj", "{8F5272E2-034A-42A4-9062-2335C0A1DAC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEA13CCF-EDB0-4001-B43E-904C914C9303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA13CCF-EDB0-4001-B43E-904C914C9303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA13CCF-EDB0-4001-B43E-904C914C9303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA13CCF-EDB0-4001-B43E-904C914C9303}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F5272E2-034A-42A4-9062-2335C0A1DAC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F5272E2-034A-42A4-9062-2335C0A1DAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F5272E2-034A-42A4-9062-2335C0A1DAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F5272E2-034A-42A4-9062-2335C0A1DAC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28ACA8A7-9925-419B-8239-155F8453C512} = {B99CD9DA-E2BE-4E93-9FDF-776B7EC14C7C}
+		{0E871620-8A87-46B4-88D2-17624B2158FC} = {28ACA8A7-9925-419B-8239-155F8453C512}
+		{EEA13CCF-EDB0-4001-B43E-904C914C9303} = {0E871620-8A87-46B4-88D2-17624B2158FC}
+		{500EAB12-CD3F-4E65-8599-4ED5BAA48430} = {F42B751F-8B7E-4463-8A34-3D6AD49810C7}
+		{0B7CD8C8-D21B-44B7-8070-38F1748CBDF1} = {500EAB12-CD3F-4E65-8599-4ED5BAA48430}
+		{FBD35F3D-ACEF-41E7-950E-734700EFABF2} = {0B7CD8C8-D21B-44B7-8070-38F1748CBDF1}
+		{8F5272E2-034A-42A4-9062-2335C0A1DAC3} = {FBD35F3D-ACEF-41E7-950E-734700EFABF2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEFBB953-DCAC-486D-9668-29092268029D}
+	EndGlobalSection
+EndGlobal
