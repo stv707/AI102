@@ -178,6 +178,11 @@ Now you're ready to use the service principal identity in an application, so it 
     pip install azure-identity==1.5.0
     pip install azure-keyvault-secrets==4.2.0
     ```
+    **You may need to install this as well if using venv**
+    ```
+     pip install setuptools
+    ```
+
 
 3. View the contents of the **keyvault-client** folder, and note that it contains a file for configuration settings:
     - **C#**: appsettings.json
