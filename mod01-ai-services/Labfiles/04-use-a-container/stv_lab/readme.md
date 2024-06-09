@@ -11,8 +11,8 @@ This is a simple Flask web application that detects the language of the input te
 
 1. Clone this repository:
     ```sh
-    git clone https://github.com/yourusername/language-detection-app.git
-    cd language-detection-app
+    git clone https://github.com/stv707/AI102.git
+    cd ./mod01-ai-services/Labfiles/04-use-a-container/stv_lab
     ```
 
 2. Create a `.env` file and add your Azure AI service endpoint and key:
