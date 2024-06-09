@@ -46,11 +46,7 @@ In this exercise, you'll complete a partially implemented client application tha
 1. In Visual Studio Code, in the **Explorer** pane, browse to the **Labfiles\05-ocr** folder and expand the **C-Sharp** or **Python** folder depending on your language preference.
 2. Right-click the **read-text** folder and open an integrated terminal. Then install the Azure AI Vision SDK package by running the appropriate command for your language preference:
 
-    **C#**
-    
-    ```
-    dotnet add package Azure.AI.Vision.ImageAnalysis -v 1.0.0-beta.1
-    ```
+
 
     > **Note**: If you are prompted to install dev kit extensions, you can safely close the message.
 
@@ -62,7 +58,7 @@ In this exercise, you'll complete a partially implemented client application tha
 
 3. View the contents of the **read-text** folder, and note that it contains a file for configuration settings:
 
-    - **C#**: appsettings.json
+ 
     - **Python**: .env
 
     Open the configuration file and update the configuration values it contains to reflect the **endpoint** and an authentication **key** for your Azure AI services resource. Save your changes.
@@ -74,17 +70,12 @@ one of the features of the **Azure AI Vision SDK** is to read text from an image
 
 1. The **read-text** folder contains a code file for the client application:
 
-    - **C#**: Program.cs
+  
     - **Python**: read-text.py
 
     Open the code file and at the top, under the existing namespace references, find the comment **Import namespaces**. Then, under this comment, add the following language-specific code to import the namespaces you'll need to use the Azure AI Vision SDK:
 
-    **C#**
-    
-    ```C#
-    // Import namespaces
-    using Azure.AI.Vision.ImageAnalysis;
-    ```
+
     
     **Python**
     
@@ -97,14 +88,7 @@ one of the features of the **Azure AI Vision SDK** is to read text from an image
 
 2. In the code file for your client application, in the **Main** function, the code to load the configuration settings has been provided. Then find the comment **Authenticate Azure AI Vision client**. Then, under this comment, add the following language-specific code to create and authenticate an Azure AI Vision client object:
 
-    **C#**
-    
-    ```C#
-    // Authenticate Azure AI Vision client
-    ImageAnalysisClient client = new ImageAnalysisClient(
-        new Uri(aiSvcEndpoint),
-        new AzureKeyCredential(aiSvcKey));
-    ```
+
     
     **Python**
     
@@ -120,40 +104,7 @@ one of the features of the **Azure AI Vision SDK** is to read text from an image
 
 4. Let's add some code to the body of the **GetTextRead** function. Find the comment **Use Analyze image function to read text in image**. Then, under this comment, add the following language-specific code, noting that the visual features are specified when calling the `Analyze` function:
 
-    **C#**
-
-    ```C#
-    // Use Analyze image function to read text in image
-    ImageAnalysisResult result = client.Analyze(
-        BinaryData.FromStream(stream),
-        // Specify the features to be retrieved
-        VisualFeatures.Read);
     
-    stream.Close();
-    
-    // Display analysis results
-    if (result.Read != null)
-    {
-        Console.WriteLine($"Text:");
-    
-        // Prepare image for drawing
-        System.Drawing.Image image = System.Drawing.Image.FromFile(imageFile);
-        Graphics graphics = Graphics.FromImage(image);
-        Pen pen = new Pen(Color.Cyan, 3);
-        
-        foreach (var line in result.Read.Blocks.SelectMany(block => block.Lines))
-        {
-            // Return the text detected in the image
-    
-    
-        }
-            
-        // Save image
-        String output_file = "text.jpg";
-        image.Save(output_file);
-        Console.WriteLine("\nResults saved in " + output_file + "\n");   
-    }
-    ```
     
     **Python**
     
@@ -189,38 +140,8 @@ one of the features of the **Azure AI Vision SDK** is to read text from an image
 
 5. In the code you just added in the **GetTextRead** function, and under the **Return the text detected in the image** comment, add the following code (this code prints the image text to the console and generates the image **text.jpg** which highlights the image's text):
 
-    **C#**
-    
-    ```C#
-    // Return the text detected in the image
-    Console.WriteLine($"   '{line.Text}'");
-    
-    // Draw bounding box around line
-    var drawLinePolygon = true;
-    
-    // Return the position bounding box around each line
-    
-    
-    
-    // Return each word detected in the image and the position bounding box around each word with the confidence level of each word
-    
-    
-    
-    // Draw line bounding polygon
-    if (drawLinePolygon)
-    {
-        var r = line.BoundingPolygon;
-    
-        Point[] polygonPoints = {
-            new Point(r[0].X, r[0].Y),
-            new Point(r[1].X, r[1].Y),
-            new Point(r[2].X, r[2].Y),
-            new Point(r[3].X, r[3].Y)
-        };
-    
-        graphics.DrawPolygon(pen, polygonPoints);
-    }
-    ```
+
+
     
     **Python**
     
@@ -250,11 +171,7 @@ one of the features of the **Azure AI Vision SDK** is to read text from an image
 
 8. Save your changes and return to the integrated terminal for the **read-text** folder, and enter the following command to run the program:
 
-    **C#**
-    
-    ```
-    dotnet run
-    ```
+
     
     **Python**
     
@@ -268,12 +185,7 @@ one of the features of the **Azure AI Vision SDK** is to read text from an image
 
 11. Return to the code file in Visual Studio Code, and find the comment **Return the position bounding box around each line**. Then, under this comment, add the following code:
 
-    **C#**
-    
-    ```C#
-    // Return the position bounding box around each line
-    Console.WriteLine($"   Bounding Polygon: [{string.Join(" ", line.BoundingPolygon)}]");  
-    ```
+
     
     **Python**
     
@@ -284,11 +196,6 @@ one of the features of the **Azure AI Vision SDK** is to read text from an image
 
 12. Save your changes and return to the integrated terminal for the **read-text** folder, and enter the following command to run the program:
 
-    **C#**
-    
-    ```
-    dotnet run
-    ```
     
     **Python**
     
@@ -301,28 +208,7 @@ one of the features of the **Azure AI Vision SDK** is to read text from an image
 
 14. Return to the code file in Visual Studio Code, and find the comment **Return each word detected in the image and the position bounding box around each word with the confidence level of each word**. Then, under this comment, add the following code:
 
-    **C#**
-    
-    ```C#
-    // Return each word detected in the image and the position bounding box around each word with the confidence level of each word
-    foreach (DetectedTextWord word in line.Words)
-    {
-        Console.WriteLine($"     Word: '{word.Text}', Confidence {word.Confidence:F4}, Bounding Polygon: [{string.Join(" ", word.BoundingPolygon)}]");
-        
-        // Draw word bounding polygon
-        drawLinePolygon = false;
-        var r = word.BoundingPolygon;
-    
-        Point[] polygonPoints = {
-            new Point(r[0].X, r[0].Y),
-            new Point(r[1].X, r[1].Y),
-            new Point(r[2].X, r[2].Y),
-            new Point(r[3].X, r[3].Y)
-        };
-    
-        graphics.DrawPolygon(pen, polygonPoints);
-    }
-    ```
+   
     
     **Python**
     
@@ -340,11 +226,7 @@ one of the features of the **Azure AI Vision SDK** is to read text from an image
 
 15. Save your changes and return to the integrated terminal for the **read-text** folder, and enter the following command to run the program:
 
-    **C#**
-    
-    ```
-    dotnet run
-    ```
+
     
     **Python**
     
@@ -366,11 +248,7 @@ In the previous exercise, you read well defined text from an image, but sometime
 
 3. From the integrated terminal for the **read-text** folder, enter the following command to run the program:
 
-    **C#**
-    
-    ```
-    dotnet run
-    ```
+
     
     **Python**
     
