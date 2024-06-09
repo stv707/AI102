@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Language Detection</title>
+</head>
+<body>
+    <h1>Enter Text to Detect Language</h1>
+    <form method="post">
+        <textarea id="textInput" name="text" rows="4" cols="50"></textarea><br>
+        <button type="button" onclick="insertRandomText()">Random</button><br>
+        <input type="submit" value="Detect Language">
+    </form>
+    {% if language %}
+        <h2>Detected Language: {{ language }}</h2>
+    {% endif %}
+
+    <h3>System Information</h3>
+    <ul>
+        <li>Operating System: {{ os_info }}</li>
+        <li>Container Name: {{ container_name }}</li>
+        <li>Number of CPUs: {{ cpu_count }}</li>
+        <li>Memory (GB): {{ memory_info | round(2) }}</li>
+    </ul>
+
+    <script>
+        function insertRandomText() {
+            const samples = [
+                "Bonjour, comment ça va?", // French
+                "Hola, ¿cómo estás?", // Spanish
+                "你好，你怎么样？", // Chinese
+                "こんにちは、お元気ですか？", // Japanese
+                "Hallo, wie geht es Ihnen?", // German
+                "Anun Bala" // Sarawak
+            ];
+            const randomSample = samples[Math.floor(Math.random() * samples.length)];
+            document.getElementById('textInput').value = randomSample;
+        }
+    </script>
+</body>
+</html>
