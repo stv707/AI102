@@ -3,7 +3,8 @@ from datetime import datetime
 import os
 
 # Import namespaces
-
+# Import namespaces
+import azure.cognitiveservices.speech as speech_sdk
 
 def main():
     try:
@@ -15,7 +16,9 @@ def main():
         ai_region = os.getenv('SPEECH_REGION')
 
         # Configure speech service
-        
+        # Configure speech service
+        speech_config = speech_sdk.SpeechConfig(ai_key, ai_region)
+        print('Ready to use speech service in:', speech_config.region)
 
         # Get spoken input
         command = TranscribeCommand()
@@ -29,9 +32,24 @@ def TranscribeCommand():
     command = ''
 
     # Configure speech recognition
+    # Configure speech recognition
+    audio_config = speech_sdk.AudioConfig(use_default_microphone=True)
+    speech_recognizer = speech_sdk.SpeechRecognizer(speech_config, audio_config)
+    print('Speak now...')
 
 
     # Process speech input
+    # Process speech input
+    speech = speech_recognizer.recognize_once_async().get()
+    if speech.reason == speech_sdk.ResultReason.RecognizedSpeech:
+        command = speech.text
+        print(command)
+    else:
+        print(speech.reason)
+        if speech.reason == speech_sdk.ResultReason.Canceled:
+            cancellation = speech.cancellation_details
+            print(cancellation.reason)
+            print(cancellation.error_details)
 
 
     # Return the command
@@ -44,10 +62,23 @@ def TellTime():
 
 
     # Configure speech synthesis
-    
+    # Configure speech synthesis
+    speech_config.speech_synthesis_voice_name = "en-GB-RyanNeural"
+    speech_synthesizer = speech_sdk.SpeechSynthesizer(speech_config)
 
     # Synthesize spoken output
-
+    # Synthesize spoken output
+    responseSsml = " \
+        <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'> \
+            <voice name='en-GB-LibbyNeural'> \
+                {} \
+                <break strength='weak'/> \
+                Time to enjoy Life! \
+            </voice> \
+        </speak>".format(response_text)
+    speak = speech_synthesizer.speak_ssml_async(responseSsml).get()
+    if speak.reason != speech_sdk.ResultReason.SynthesizingAudioCompleted:
+        print(speak.reason)
 
     # Print the response
     print(response_text)
