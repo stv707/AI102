@@ -68,6 +68,7 @@ def AnalyzeImage(image_filename, image_data, cv_client):
     # Display analysis results
     # Get image captions
     if result.caption is not None:
+        
         print("\nCaption:")
         print(" Caption: '{}' (confidence: {:.2f}%)".format(result.caption.text, result.caption.confidence * 100))
 
